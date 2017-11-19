@@ -53,7 +53,9 @@ end#letdo2
 end#letdo3
   end#contextdo
   context "minimum balance"
-    it "raises an error if opening balance is too low"
+    it "raises an error if opening balance is too low" do
+      expect {Bank.new(100, "Sarah") }.to raise_error(ArgumentError)
+    end
     it "does NOT raise an error if opening balance is over minimum balance"
     it "allows the bank owner to change the minimum balance"
 end #describe do
