@@ -9,7 +9,7 @@ end #:account do
       expect(account).to be_a(BankAccount)
 end#classcheck do
     it "can report it's balance" do
-      expect(account.test_balance).to eq(500)
+      expect(account.balance).to eq(500)
   end#test_balancedo
 end#contextdo
   context "making a deposit" do
@@ -23,11 +23,35 @@ end#contextdo
     end#itdo
   end #letdo
 end #contextdo
-  context "making a withdrawal"
-    it "balance is decreased"
-  context "transfering funds"
-    it "account balance is decreased"
-    it "other account balance is increased"
+  context "making a withdrawal" do
+    let(:account) do
+      acount = BankAccount.new(500, "Sarah")
+      account.withdraw(200)
+      account
+
+    it "balance is decreased" do
+      expect(account.balance).to eq(300)
+end #accountdo
+    end#itdo
+  end #contextdo
+  context "transfering funds" do
+    let (:account) do
+      account = BankAccount.new(500, "Sarah")
+    let (:other_account) do
+      other_account = BankAccount.new(1000, "Todd")
+
+    before :each do
+      account.transfer(200, other_account)
+    it "account balance is decreased" do
+      expect(account.balance).to eq(300)
+    end#itdo
+    it "other account balance is increased" do
+      expect(other_account.balance).to eq(1200)
+    end#itdo
+  end #letdo1
+end#letdo2
+end#letdo3
+  end#contextdo
   context "minimum balance"
     it "raises an error if opening balance is too low"
     it "does NOT raise an error if opening balance is over minimum balance"
