@@ -1,16 +1,14 @@
 class BankAccount
-attr_accessor :balance, :name
 
+attr_accessor :balance, :name, :minimum_balance
+
+def self.minimum_balance(minimum_balance)
+@minimum_balance
+end
 def balance
-    begin
-    if @balance.to_i < 200
-    raise ArgumentError.new("Minimum Balance requirement not met")
-  else
     return @balance.to_i
-  end
   # rescue ArgumentError => e
   #   puts e.message
-  end#begin
 end #balance
 
 def deposit(amount)
@@ -25,13 +23,22 @@ def transfer(amount, bank_account)
 
   return @balance.to_i - (amount)
 end#transfer
+# def self.minimum_balance
+#
+# end
 
 
   def initialize(balance, name)
     @balance = balance
     @name = name
-
-
+    @minimum_balance = minimum_balance
+    begin
+      if @balance.to_i < 200
+        raise ArgumentError.new("Minimum Balance requirement not met")
+      else
+        return @balance.to_i
+      end
+    end
   end #initialize
 end #BankAccount
 
