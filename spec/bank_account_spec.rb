@@ -63,7 +63,7 @@ end#itdo
       expect{ BankAccount.new(201, "Terry") }.not_to raise_error
     end
     it "allows the bank owner to change the minimum balance" do
-      BankAccount.minimum_balance =100
+      BankAccount.minimum_balance = 100
       expect(BankAccount.minimum_balance).to eq(100)
     end
 end #describe do
